@@ -1,23 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import UrlShortener from './components/UrlShortener';
+import UrlList from './components/UrlList';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+          <UrlShortener />
+        </div>
+        <div>
+          <h1>Painel de Estatísticas de URLs Encurtadas</h1>
+          <UrlList />
+        </div>
       </header>
     </div>
   );
