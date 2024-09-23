@@ -61,33 +61,49 @@ function App() {
       });
   };
 
+  const onLogout = () => {
+    // Limpar os dados de login e desautenticar o usuário
+    localStorage.removeItem('loginData');
+    setUser(null);
+    setIsAuthenticated(false);
+  };
+
   return (
     <BrowserRouter basename='/admin'>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Auth isAuthenticated={isAuthenticated} onLogin={onLogin}>
-              <div className="App">
-                <header className="App-header">
-                  <div>
-                    {/* Somente renderizar UrlShortener quando o user estiver definido */}
-                    {user && isAuthenticated ? (
-                      <UrlShortener user={user} />
-                    ) : (
-                      <p>Carregando dados do usuário...</p>
-                    )}
-                  </div>
-                  <div>
-                    <h1>Painel de Estatísticas de URLs Encurtadas</h1>
-                    <UrlList />
-                  </div>
-                </header>
-              </div>
-            </Auth>
-          }
-        />
-      </Routes>
+      <div className="App">
+        {/* Barra de ferramentas e menu */}
+        <header className="menu-bar">
+          <div className="menu-title">Painel de Controle</div>
+          {isAuthenticated && (
+            <button className="logout-button" onClick={onLogout}>Logout</button>
+          )}
+        </header>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Auth isAuthenticated={isAuthenticated} onLogin={onLogin}>
+                <div>
+                  <header className="App-header">
+                    <div>
+                      {/* Somente renderizar UrlShortener quando o user estiver definido */}
+                      {user && isAuthenticated ? (
+                        <UrlShortener user={user} />
+                      ) : (
+                        <p>Carregando dados do usuário...</p>
+                      )}
+                    </div>
+                    <div>
+                      <h1>Painel de Estatísticas de URLs Encurtadas</h1>
+                      <UrlList />
+                    </div>
+                  </header>
+                </div>
+              </Auth>
+            }
+          />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
