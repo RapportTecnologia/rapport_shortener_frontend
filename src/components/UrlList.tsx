@@ -54,7 +54,7 @@ const UrlList: React.FC = () => {
 
       {selectedUrl && (
         <div>
-          <h3>Estatísticas para: {selectedUrl.hash}</h3>
+          <h3>Estatísticas para: {selectedUrl.hash} - {selectedUrl.original_url}</h3>
           <UrlStatsChart shortId={selectedUrl.hash} />
         </div>
       )}

@@ -43,71 +43,68 @@ const UrlStatsChart: React.FC<{ shortId: string }> = ({ shortId }) => {
   const accessesPerDayData = Object.values(stats.accessesPerDay);
 
   return (
-    <div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div className="chart-grid">
+      <div className="chart-container">
+        <Line
+          data={{
+            labels: accessesPerDayLabels,
+            datasets: [
+              {
+                label: 'Acessos por Dia',
+                data: accessesPerDayData,
+                backgroundColor: 'rgba(75,192,192,0.4)',
+                borderColor: 'rgba(75,192,192,1)',
+                borderWidth: 1,
+              },
+            ],
+          }}
+        />
+      </div>
 
-      <h3>Total de Acessos: {stats.totalAccesses}</h3>
-      <h4>Total de IPs distintos: {stats.totalIps}</h4>
-      <h4>Média de Acessos por Dia: {stats.averageAccessesPerDay.toFixed(2)}</h4>
+      <div className="chart-container">
+        <Pie
+          data={{
+            labels: ipLabels,
+            datasets: [
+              {
+                label: 'Porcentagem de Acessos por IP',
+                data: ipPercentages,
+                backgroundColor: [
+                  '#FF6384',
+                  '#36A2EB',
+                  '#FFCE56',
+                  '#4BC0C0',
+                  '#9966FF',
+                ],
+                hoverBackgroundColor: [
+                  '#FF6384',
+                  '#36A2EB',
+                  '#FFCE56',
+                  '#4BC0C0',
+                  '#9966FF',
+                ],
+              },
+            ],
+          }}
+        />
+      </div>
 
-      {/* Gráfico de Acessos por Dia */}
-      <Line
-        data={{
-          labels: accessesPerDayLabels,
-          datasets: [
-            {
-              label: 'Acessos por Dia',
-              data: accessesPerDayData,
-              backgroundColor: 'rgba(75,192,192,0.4)',
-              borderColor: 'rgba(75,192,192,1)',
-              borderWidth: 1,
-            },
-          ],
-        }}
-      />
-
-      {/* Gráfico de Participação de IPs */}
-      <Pie
-        data={{
-          labels: ipLabels,
-          datasets: [
-            {
-              label: 'Porcentagem de Acessos por IP',
-              data: ipPercentages,
-              backgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56',
-                '#4BC0C0',
-                '#9966FF',
-              ],
-              hoverBackgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56',
-                '#4BC0C0',
-                '#9966FF',
-              ],
-            },
-          ],
-        }}
-      />
-
-      {/* Gráfico de Acessos por IP */}
-      <Bar
-        data={{
-          labels: ipLabels,
-          datasets: [
-            {
-              label: 'Acessos por IP',
-              data: ipAccesses,
-              backgroundColor: 'rgba(153, 102, 255, 0.6)',
-              borderColor: 'rgba(153, 102, 255, 1)',
-              borderWidth: 1,
-            },
-          ],
-        }}
-      />
+      <div className="chart-container">
+        <Bar
+          data={{
+            labels: ipLabels,
+            datasets: [
+              {
+                label: 'Acessos por IP',
+                data: ipAccesses,
+                backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1,
+              },
+            ],
+          }}
+        />
+      </div>
     </div>
   );
 };
