@@ -4,9 +4,9 @@ import UrlStatsChart from './UrlStatsChart';
 interface ShortenedUrl {
   id: number;
   site_id: number;
-  original_url: string;
+  originalUrl: string;
   hash: string;
-  created_at: string;
+  createdAt: string;
 }
 
 const UrlList: React.FC = () => {
@@ -45,7 +45,7 @@ const UrlList: React.FC = () => {
           {urls.map((url) => (
             <li key={url.id}>
               <button onClick={() => handleUrlClick(url)}>
-                {url.hash} - {url.original_url}
+                {url.hash} - {url.originalUrl}
               </button>
             </li>
           ))}
@@ -54,7 +54,7 @@ const UrlList: React.FC = () => {
 
       {selectedUrl && (
         <div>
-          <h3>Estatísticas para: {selectedUrl.hash} - {selectedUrl.original_url}</h3>
+          <h3>Estatísticas para: {selectedUrl.hash} - {selectedUrl.originalUrl}</h3>
           <UrlStatsChart shortId={selectedUrl.hash} />
         </div>
       )}

@@ -6,6 +6,6 @@ export interface UserType{
     username: string;
     name: string;
     email: string;
-    whatsapp: string;
+    contact: string;
   }
   

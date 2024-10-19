@@ -9,7 +9,7 @@ const UrlShortener: React.FC<UrlShortenerProps> = ({ user }) => {
   const [originalUrl, setOriginalUrl] = useState('');
   const [ownerName, setOwnerName] = useState(user.name || '');
   const [ownerEmail, setOwnerEmail] = useState(user.email || '');
-  const [ownerWhatsapp, setOwnerWhatsapp] = useState(user.whatsapp || '');
+  const [ownerWhatsapp, setOwnerWhatsapp] = useState(user.contact || '');
   const [shortUrl, setShortUrl] = useState('');
   const [error, setError] = useState('');
 
@@ -19,7 +19,7 @@ const UrlShortener: React.FC<UrlShortenerProps> = ({ user }) => {
     // Atualizar os campos com os dados do usuário quando o `user` for atualizado
     setOwnerName(user.name || '');
     setOwnerEmail(user.email || '');
-    setOwnerWhatsapp(user.whatsapp || '');
+    setOwnerWhatsapp(user.contact || '');
     
   }, [user]);
 
@@ -33,7 +33,7 @@ const UrlShortener: React.FC<UrlShortenerProps> = ({ user }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ url: originalUrl, name: ownerName, email: ownerEmail, whatsapp: ownerWhatsapp }),
+        body: JSON.stringify({ url: originalUrl, name: ownerName, email: ownerEmail, contact: ownerWhatsapp }),
       });
 
       if (!response.ok) {

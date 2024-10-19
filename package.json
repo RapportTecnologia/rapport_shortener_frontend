@@ -1,6 +1,7 @@
 {
   "name": "rapport-shortener-frontend",
   "version": "0.0.3",
+  "keywords": ["frontend", "rapport", "shortener", "encurtador", "urls", "rastreamento"],
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
