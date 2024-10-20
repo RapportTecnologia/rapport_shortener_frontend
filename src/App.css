@@ -3,6 +3,7 @@ body {
   background-color: #f0f0f0;
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Evita rolagem horizontal */
 }
 
 h1, h2, h3, h4 {
@@ -58,7 +59,7 @@ button:hover {
 
 /* Ajustando o fundo claro para o painel de estatísticas */
 .App-header {
-  background-color: #f0f0f0; /* Fundo claro */
+  background-color: #f0f0f0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -66,13 +67,21 @@ button:hover {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #333;
+  padding-top: 60px; /* Adiciona espaço para evitar a sobreposição com o menu fixo */
 }
 
 /* Adicionando fundo claro para os containers */
 .chart-container, .url-list-container {
-  background-color: #ffffff; /* Fundo branco para maior contraste */
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+}
+
+/* Tornando o conteúdo rolável */
+.App {
+  overflow-y: auto;
+  height: 100vh;
+  padding-top: 60px; /* Adiciona um padding ao topo para o conteúdo não ser ocultado pela barra */
 }
