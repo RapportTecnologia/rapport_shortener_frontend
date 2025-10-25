@@ -23,7 +23,9 @@ const UrlStatsChart: React.FC<{ shortId: string }> = ({ shortId }) => {
         }
         const data = await response.json();
         setStats(data);
+        setError('');
       } catch (err) {
+        console.error('[stats/chart] ❌ Falha ao carregar estatísticas do shortId:', shortId, err);
         setError('Erro ao buscar estatísticas.');
       }
     };
@@ -32,6 +34,10 @@ const UrlStatsChart: React.FC<{ shortId: string }> = ({ shortId }) => {
       fetchStats();
     }
   }, [shortId]);
+
+  if (error) {
+    return <p className="text-red-600 text-sm">{error}</p>;
+  }
 
   if (!stats) return <p>Carregando estatísticas...</p>;
 
